@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You Raisa | By Rafsan</title>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <title>Gift For Raisa ❤️</title>
+    <!-- Bangla Fonts Added -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Da+2:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            --primary: #ff4d6d;
-            --secondary: #ff8fa3;
-            --bg-gradient: linear-gradient(135deg, #fff0f3 0%, #ffe5ec 100%);
-            --glass: rgba(255, 255, 255, 0.7);
-            --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+            --primary: #ff3366;
+            --secondary: #ffccd5;
+            --bg-color: #fff0f5;
+            --text-color: #4a4a4a;
         }
 
         * {
@@ -23,289 +22,316 @@
         }
 
         body {
-            font-family: 'Nunito', sans-serif;
-            background: var(--bg-gradient);
+            font-family: 'Baloo Da 2', cursive; /* Bangla Font */
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            background-color: var(--bg-color);
             min-height: 100vh;
-            color: #4a4a4a;
             overflow-x: hidden;
         }
 
-        /* Floating Hearts Animation Background */
-        .background-hearts {
+        /* --- GIFT BOX STYLES (Intro) --- */
+        .gift-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            background: rgba(255, 192, 203, 0.95);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 1s ease;
         }
 
-        .bg-heart {
+        .gift-box {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        .box-body {
+            width: 150px;
+            height: 120px;
+            background: #ff3366;
+            border-radius: 10px;
             position: absolute;
-            color: rgba(255, 77, 109, 0.2);
-            font-size: 2rem;
-            animation: floatUp 10s linear infinite;
+            bottom: 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(100vh) scale(0.5); opacity: 0; }
-            50% { opacity: 1; }
-            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        .box-lid {
+            width: 170px;
+            height: 40px;
+            background: #ff6688;
+            border-radius: 10px;
+            position: absolute;
+            top: 10px;
+            left: -10px;
+            transition: transform 0.5s;
+            z-index: 2;
         }
 
-        /* Main Container */
-        .container {
-            max-width: 1000px;
+        .ribbon {
+            position: absolute;
+            background: #fff;
+        }
+        .r-vertical { width: 30px; height: 100%; left: 50%; transform: translateX(-50%); }
+        .r-horizontal { width: 100%; height: 30px; top: 50%; transform: translateY(-50%); }
+
+        .click-hint {
+            margin-top: 50px;
+            font-size: 1.5rem;
+            color: #d6336c;
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        @keyframes pulse {
+            0% { opacity: 0.6; } 100% { opacity: 1; }
+        }
+        @keyframes lidOpen {
+            0% { transform: translateY(0) rotate(0); }
+            100% { transform: translateY(-100px) rotate(20deg); opacity: 0; }
+        }
+
+        /* Confetti */
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: gold;
+            animation: fall 2s linear forwards;
+        }
+        @keyframes fall { to { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
+
+        /* --- MAIN CONTENT --- */
+        .main-container {
+            display: none; /* Hidden initially */
+            max-width: 1100px;
             margin: 0 auto;
             padding: 20px;
             text-align: center;
+            opacity: 0;
+            transition: opacity 2s;
         }
 
-        /* Header Section (Glassmorphism) */
-        .header-section {
-            background: var(--glass);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+        /* Header Card */
+        .intro-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            padding: 40px;
             border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.18);
-            box-shadow: var(--shadow);
-            padding: 40px 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
             margin-bottom: 50px;
-            position: relative;
-            animation: fadeInDown 1.5s ease;
+            border: 2px solid white;
         }
 
         h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3.5rem;
-            background: -webkit-linear-gradient(#ff4d6d, #ff758c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: #d6336c;
+            font-size: 2.5rem;
             margin-bottom: 10px;
         }
-
-        .intro-text {
-            font-size: 1.1rem;
+        
+        .sub-text {
+            font-size: 1.2rem;
             color: #666;
             margin-bottom: 30px;
         }
 
-        .highlight {
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        /* Main Profile Images */
-        .main-images {
+        /* Specific Images */
+        .couple-images {
             display: flex;
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            margin-bottom: 20px;
         }
 
-        .profile-card {
-            background: white;
-            padding: 10px;
+        .hero-img {
+            width: 250px;
             border-radius: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transform: rotate(-3deg);
+            border: 5px solid #fff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
             transition: transform 0.3s;
         }
+        .hero-img:hover { transform: scale(1.05); }
 
-        .profile-card:nth-child(2) {
-            transform: rotate(3deg);
-        }
-
-        .profile-card:hover {
-            transform: scale(1.05) rotate(0deg);
-            z-index: 10;
-        }
-
-        .p-img {
-            width: 250px;
-            height: auto;
-            border-radius: 10px;
-            border: 2px solid #ffe5ec;
-        }
-
-        /* Gallery Grid for 100+ items */
+        /* --- GALLERY GRID (ANIMATED) --- */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 20px;
-            padding: 10px;
+            padding-bottom: 50px;
         }
 
-        .sweet-card {
+        .love-card {
             background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeInUp 0.5s ease forwards;
+            padding: 10px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            /* The Animation for Nora-Cora */
+            animation: floatMove infinite ease-in-out; 
         }
 
-        .sweet-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(255, 77, 109, 0.2);
-        }
-
-        .card-img {
+        .love-card img {
             width: 100%;
             height: 150px;
             object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
         }
 
-        .card-caption {
-            padding: 15px;
-            font-size: 0.9rem;
+        .caption {
+            font-size: 1rem;
+            color: #ff3366;
             font-weight: 700;
-            color: #555;
-            background: #fff;
-            border-top: 1px solid #eee;
         }
 
-        .heart-icon {
-            color: var(--primary);
-            margin-right: 5px;
+        /* Keyframe for floating animation */
+        @keyframes floatMove {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(2deg); }
+            100% { transform: translateY(0) rotate(0deg); }
         }
 
-        /* Footer */
         footer {
-            margin-top: 50px;
-            padding: 20px;
-            font-size: 0.9rem;
+            margin-top: 30px;
             color: #888;
+            padding-bottom: 20px;
         }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-50px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        @keyframes fadeInUp {
-            to { opacity: 1; }
-        }
-
     </style>
 </head>
 <body>
 
-    <!-- Background Animation -->
-    <div class="background-hearts" id="bgHearts"></div>
-
-    <div class="container">
-        
-        <!-- Header Section with Main 2 Images -->
-        <div class="header-section">
-            <div class="main-images">
-                <!-- 1st Image -->
-                <div class="profile-card">
-                    <img src="https://i.postimg.cc/rm43fwXD/Screenshot_20260130_004352.png" alt="Memory 1" class="p-img">
-                </div>
-                <!-- 2nd Image -->
-                <div class="profile-card">
-                    <img src="https://i.postimg.cc/TPFBjWST/Screenshot_20260130_004816.png" alt="Memory 2" class="p-img">
-                </div>
+    <!-- GIFT BOX SCREEN -->
+    <div class="gift-overlay" id="giftScreen" onclick="openGift()">
+        <div class="gift-box">
+            <div class="box-lid" id="lid">
+                <div class="ribbon r-vertical"></div>
             </div>
+            <div class="box-body">
+                <div class="ribbon r-vertical"></div>
+                <div class="ribbon r-horizontal"></div>
+            </div>
+        </div>
+        <div class="click-hint">🎁 গিফট খুলতে এখানে ক্লিক করো Raisa!</div>
+    </div>
 
-            <h1>Hea Raisa, Welcome!</h1>
-            <p class="intro-text">
-                আমাদের এই ছোট্ট দুনিয়ায় তোমাকে স্বাগতম।<br>
-                তোমাকে <span class="highlight">Rafsan</span> একটা ছোট গিফট করলো।<br>
-                নিচে তোমার জন্য ১০০টি স্পেশাল মুহূর্ত অপেক্ষা করছে... 👇
+    <!-- MAIN WEBSITE CONTENT -->
+    <div class="main-container" id="mainContent">
+        
+        <div class="intro-card">
+            <h1>স্বাগতম আমাদের দুনিয়ায়</h1>
+            <p class="sub-text">
+                হে রাইসা, রাফসান তোমাকে ছোট্ট একটা উপহার দিল।<br>
+                এই ওয়েবসাইটটি শুধুমাত্র তোমার জন্য সাজানো।
             </p>
+
+            <div class="couple-images">
+                <img src="https://i.postimg.cc/rm43fwXD/Screenshot_20260130_004352.png" alt="Rafsan Raisa 1" class="hero-img">
+                <img src="https://i.postimg.cc/TPFBjWST/Screenshot_20260130_004816.png" alt="Rafsan Raisa 2" class="hero-img">
+            </div>
         </div>
 
-        <!-- 100+ Captions & Images Grid -->
-        <div class="gallery-grid" id="galleryGrid">
-            <!-- JavaScript will auto-generate 100+ items here -->
+        <!-- 100+ Animated Cards -->
+        <div class="gallery-grid" id="gallery">
+            <!-- JS will put images here -->
         </div>
 
         <footer>
-            Made with ❤️ by Rafsan for Raisa
+            ভালোবাসায় - রাফসান ❤️
         </footer>
-
     </div>
 
     <script>
-        // 1. Background Floating Hearts Generator
-        function createBgHearts() {
-            const container = document.getElementById('bgHearts');
-            for(let i=0; i<20; i++) {
-                const heart = document.createElement('div');
-                heart.classList.add('bg-heart');
-                heart.innerHTML = '❤';
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.animationDuration = (Math.random() * 5 + 5) + 's';
-                heart.style.animationDelay = (Math.random() * 5) + 's';
-                container.appendChild(heart);
-            }
-        }
-        createBgHearts();
+        // 1. Gift Opening Logic
+        function openGift() {
+            const lid = document.getElementById('lid');
+            const screen = document.getElementById('giftScreen');
+            const content = document.getElementById('mainContent');
 
-        // 2. Data for the 100+ Captions (A Mix of Sweet Sentences)
-        const captionsList = [
-            "তোমার হাসিটা বড্ড মায়াবী",
-            "তুমি আমার প্রিয় মানুষ",
-            "You are my favorite notification",
-            "সারা জীবন পাশে থেকো",
-            "আমার সবটুকু ভালোবাসা তোমার জন্য",
-            "Cutie Pie Raisa",
-            "চাঁদের চেয়েও সুন্দর তুমি",
-            "My Queen",
-            "শুধু তোমাকেই চাই",
-            "আমাদের গল্পটা সেরা",
-            "You make me happy",
-            "তোমার চোখের মায়ায় পড়েছি",
-            "অল্প অল্প প্রেম, অনেক অনেক মায়া",
-            "তুমি আমার পৃথিবী",
-            "Forever & Always",
-            "মিষ্টি মেয়ে রাইসা",
-            "Love you endless",
-            "Best Gift Ever",
-            "তুমি হীনা আমি একা",
-            "Magic in your eyes"
+            // Lid animation
+            lid.style.animation = 'lidOpen 0.8s forwards';
+
+            // Confetti explosion
+            for(let i=0; i<50; i++) {
+                createConfetti();
+            }
+
+            // Hide gift screen, Show content
+            setTimeout(() => {
+                screen.style.opacity = '0';
+                setTimeout(() => {
+                    screen.style.display = 'none';
+                    content.style.display = 'block';
+                    
+                    // Fade in content
+                    setTimeout(() => {
+                        content.style.opacity = '1';
+                        generateGallery(); // Load images after opening
+                    }, 100);
+                }, 1000);
+            }, 800);
+        }
+
+        function createConfetti() {
+            const colors = ['#f00', '#0f0', '#00f', '#ff0', '#f0f'];
+            const conf = document.createElement('div');
+            conf.classList.add('confetti');
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.top = '-10px';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = Math.random() * 2 + 1 + 's';
+            document.getElementById('giftScreen').appendChild(conf);
+        }
+
+        // 2. Bangla Captions List
+        const banglaCaptions = [
+            "তুমি আমার স্বপ্ন", "ভালোবাসি তোমায়", "আমার রাজকন্যা", 
+            "মিষ্টি হাসি", "শুধু তুমি", "মায়াবী চোখ", 
+            "আমার পৃথিবী", "প্রিয়তমা", "সবটুকু ভালোবাসা", 
+            "চিরদিনের সাথী", "মন মাঝারে তুমি", "হৃদয়ের স্পন্দন",
+            "কিউট পরী", "আমার সুখ", "ভালোবাসার রং", 
+            "অভিমানী মেয়ে", "চাঁদের কনা", "আমার নিঃশ্বাস",
+            "তুমি হীনা আমি একা", "সারা জীবন থেকো"
         ];
 
-        // 3. Generate 100+ Cards Function
-        const gallery = document.getElementById('galleryGrid');
+        // 3. Generate Gallery with "Nora-Cora" Animation
+        function generateGallery() {
+            const gallery = document.getElementById('gallery');
 
-        function generateSweetCards() {
-            // Generating 102 cards to be exact
-            for (let i = 1; i <= 102; i++) {
-                // Pick a random caption
-                const randomCaption = captionsList[Math.floor(Math.random() * captionsList.length)];
+            for (let i = 1; i <= 100; i++) {
+                const randomCaption = banglaCaptions[Math.floor(Math.random() * banglaCaptions.length)];
                 
-                // Use picsum for random distinct cute images
-                // Note: Adding ?random=i ensures each image is different
-                const randomImage = `https://picsum.photos/300/200?random=${i}`; 
-
-                // Create HTML Structure
+                // Random Image
+                const imgUrl = `https://picsum.photos/200/200?random=${i + 100}`;
+                
+                // Create Card
                 const card = document.createElement('div');
-                card.classList.add('sweet-card');
+                card.classList.add('love-card');
                 
-                // Add staggered animation delay for cool effect
-                card.style.animationDelay = `${i * 0.05}s`; 
+                // --- THE MAGIC: Random Speed for "Nora-Cora" ---
+                // একেকটা কার্ড একেক স্পিডে দুলবে, তাই দেখতে জীবন্ত লাগবে।
+                const randomDuration = (Math.random() * 3 + 2) + 's'; // 2s to 5s
+                const randomDelay = (Math.random() * 2) + 's';
+                
+                card.style.animationDuration = randomDuration;
+                card.style.animationDelay = randomDelay;
 
                 card.innerHTML = `
-                    <img src="${randomImage}" alt="Sweet Moment" class="card-img" loading="lazy">
-                    <div class="card-caption">
-                        <span class="heart-icon">❤️</span> ${randomCaption}
-                    </div>
+                    <img src="${imgUrl}" alt="Love Image">
+                    <div class="caption">❤️ ${randomCaption}</div>
                 `;
 
                 gallery.appendChild(card);
             }
         }
-
-        // Run the generation
-        generateSweetCards();
-
     </script>
 </body>
 </html>
